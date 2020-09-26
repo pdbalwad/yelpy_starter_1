@@ -19,7 +19,17 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     // –––––– TODO: Initialize restaurantsArray
+    var restaurantsArray: [[String:Any?]] = []
     
+    func getAPIData(){
+        API.getRestaurants() { (restaurants) in
+            guard let restaurants = restaurants else {
+                return
+            }
+            print(restaurants)
+            self.restaurantsArray = restaurants
+        }
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
